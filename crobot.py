@@ -4,6 +4,10 @@ import youtube_dl
 from subprocess import Popen, PIPE
 from mutagen.mp4 import MP4
 import config_user as config 
+import logging
+
+logging.basicConfig(filename='/var/log/crobot.log', filemode='w', format='%(asctime)s - %(message)s', level=logging.INFO)
+logging.warning('This will get logged to a file')
 
 def setTags(videoInfo, filename):
     sendMessage('Setting tags to audio file...')
@@ -40,12 +44,12 @@ def downloadYoutubeAudio(videoName):
             print("file removed")
         else: 
             sendMessage('you must send "/youpodcast videolink" to download something')
-    except Exception as e: print(e)
+    except Exception as e:
+        logging.error("Exception occurred downloading youtube audio", exc_info=True)
 
 def system_call_with_response(command):
     p = Popen(command, stderr=PIPE, stdout=PIPE, shell=True)
     output, errors = p.communicate()
-    #print(p.returncode)
     outcome = dict();  
     outcome['output'] = output
     outcome['errors'] = errors
@@ -57,7 +61,7 @@ def sendTransmissionCommand(command):
     response = system_call_with_response(command)
 
     if response['errors']:
-        print('transmission command error: ' + response['errors'])
+        logging.error('transmission command error: ' + response['errors'])
     else:
         outcome = response['output']
 
@@ -115,7 +119,7 @@ def addtorrent(bot, update):
         if response:
             sendMessage("Torrent added")
         else:
-            print("Error adding torrent")
+            logging.error("Error adding torrent")
             sendMessage(response)
     else:
         sendMessage('user not allowed')
@@ -130,10 +134,30 @@ def ready(bot, update):
 
     sendMessage('yeah')
 
+def start(bot, update):
+    global chat_id
+    global theBot
+    theBot = bot
+    chat_id = update.message.chat_id
+
+    sendMessage('Hi there, I am ready, send /help command if you want to know what I can do')
+
+def help(bot, update):
+    global chat_id
+    global theBot
+    theBot = bot
+    chat_id = update.message.chat_id
+
+    msg = '- /youpodcast followed by a youtube video link will downloads an audio podcas for you \n'
+    msg += '- /addtorrent followed by a torrent will add a torrent to transmission' 
+    sendMessage(msg)
+
 def main():
-    print('I am listening...')
+    logging.info('I am listening...')
     updater = Updater(config.telegramBotCode)
     dp = updater.dispatcher
+    dp.add_handler(CommandHandler('start',start))
+    dp.add_handler(CommandHandler('help',help))
     dp.add_handler(CommandHandler('youpodcast',youpodcast))
     dp.add_handler(CommandHandler('ready',ready))
     dp.add_handler(CommandHandler('addtorrent',addtorrent))
