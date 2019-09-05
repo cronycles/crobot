@@ -5,7 +5,7 @@ telegramBotCode = 'your_code'
 cronyclesChatId = 549363921
 
 #temporary downloaded directory path
-downloadDirectory= "/home/pi/Downloads"
+downloadDirectory= "./Downloads"
 
 #access data of transmission-remote
 transmissionUsername="your_username"

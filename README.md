@@ -1,28 +1,31 @@
 # crobot
 telegram bot
 
+## Hosting
+the project is hosted on 
+https://www.pythonanywhere.com/user/cronycles/
+
 ## Setup
-- ```sudo apt-get install python-pip```
 
-- Then copy __config.py__ and create a new file called __config_user.py__
-- Then set the variables of the __config_user.py__. Never touch the original __config.py__
+### OSX 
+- if you do not have __pip__ installed please install it using the following command on the terminal:
 
+    ```easy_install pip```
+- than install the requirements:
 
-## To install dependencies
-```sudo pip install -r /path/to/libraries.txt```
+    ```pip3 install --user -r ./requirements.txt```
 
-## To launch bot
-```python crobot.py```
+###pythonanywhere
+```pip install --user -r ./requirements.txt```
 
-This initiates the server for a telegram chatbot.
+## To launch bot 
+###OSX
+open terminal and launch this command
+```python3 bot.py```
 
-##Launch boot every Raspberry Reboot
+###pythonanywhere
+```python bot.py```
 
-- ```sudo crontab -e```
-- add the following line:
-  
-  ```@reboot sh /home/pi/workspace/crobot/crobot_cron.sh > /var/log/crobot.log 2>&1 &```
-- save and exit
-- ```sudo vi /var/log/crobot.log```
-- hit a space, save and exit
-- ```sudo chmod 777 /var/log/crobot.log```  
+## See api updates
+just open chrome and go to :
+https://api.telegram.org/bot\<bot-token\>/getUpdates
