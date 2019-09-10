@@ -98,17 +98,25 @@ def addTorrentToTransmission(url, chat_id):
 
 
 @bot.message_handler(commands=['start'])
-def send_welcome(message): 
+def send_welcome_reply(message): 
     bot.reply_to(message, 'Hi there, I am ready, send /help command if you want to know what I can do')
 
 @bot.message_handler(commands=['ready'])
-def send_welcome(message): 
+def send_ready_reply(message): 
     bot.reply_to(message, 'Yeah')
 
+@bot.message_handler(commands=['mychatid'])
+def send_mychatid_reply(message):
+    chat_id = message.chat.id
+    chat_id_str = str(chat_id)
+    msg = 'your chat id is: ' + chat_id_str
+    bot.reply_to(message, msg)
+
 @bot.message_handler(commands=['help'])
-def send_welcome(message):
-    msg = '- send a youtube video link to download it as mp4 \n'
-    msg += '- /ready am I alive?' 
+def send_help_reply(message):
+    msg = '- /ready am I alive?' 
+    msg += '- /mychatid to retreive what is your chat id' 
+    msg += '- send a youtube video link to download it as mp4 \n'
     bot.reply_to(message, msg)
 
 @bot.message_handler(func=lambda message: message.text is not None and message.text.startswith("https://youtu"))
