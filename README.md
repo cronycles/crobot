@@ -5,13 +5,18 @@ telegram bot
 the project is hosted on 
 https://www.pythonanywhere.com/user/cronycles/
 
-## Setup
-
+## Project Requirements
+yo need to have **pip** installed on your system before running this project. See how to install it:
 ### OSX 
-- if you do not have __pip__ installed please install it using the following command on the terminal:
+- if you do not have __pip__ installed please install it using the following commands on the terminal:
 
-    ```easy_install pip```
-- than install the requirements:
+    - ```curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py```
+    - ```python3 get-pip.py```
+
+## Setup
+- Go into project folder
+
+- then install the requirements:
 
     ```pip3 install --user -r ./requirements.txt```
 
@@ -26,6 +31,9 @@ open terminal and launch this command
 ###pythonanywhere
 ```python bot.py```
 
-## See api updates
+## TELEGRAM BOT COMMANDS
+To see if your bot works, just type on your browser:
+https://api.telegram.org/bot\<bot-token>\/getMe
+
 just open chrome and go to :
 https://api.telegram.org/bot\<bot-token\>/getUpdates

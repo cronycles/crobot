@@ -2,3 +2,4 @@
 config_user.py
 *.pyc
 .DS_Store
+Logs/crobot.log

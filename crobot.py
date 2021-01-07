@@ -103,6 +103,7 @@ def send_welcome_reply(message):
 
 @bot.message_handler(commands=['ready'])
 def send_ready_reply(message): 
+    logging.info("ready function called")
     bot.reply_to(message, 'Yeah')
 
 @bot.message_handler(commands=['mychatid'])
