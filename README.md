@@ -3,7 +3,7 @@ telegram bot
 
 ## Hosting
 the project is hosted on 
-https://www.pythonanywhere.com/user/cronycles/
+https://www.crointhemorning.com/
 
 ## Project Requirements
 yo need to have **pip** installed on your system before running this project. See how to install it:
@@ -22,8 +22,8 @@ yo need to have **pip** installed on your system before running this project. Se
     #code of the telegram crobot
     telegramBotCode = 'YourTelegramBotCode'
 
-    #this bot is protected and only works with one chat id. Set here your one
-    myChatId = 123456789
+    #this bot is protected and only works with a whitelist of chat ids. Set here your ones
+    chatIdsWhiteList = [123456789, 23456789]
 
     #temporary downloaded directory path
     downloadDirectory= "./Downloads"
@@ -31,17 +31,18 @@ yo need to have **pip** installed on your system before running this project. Se
     #log path
     logFilePath= "./Logs/crobot.log"
     ```
-### pythonanywhere
-```pip install --user -r ./requirements.txt```
-
 ## To launch bot 
-###OSX
+### OSX
 open terminal and launch this command
-```python3 bot.py```
 
-###pythonanywhere
-```python bot.py```
+```python3 start.py```
 
 ## TELEGRAM BOT COMMANDS
 To see if your bot exists, just type on your browser:
 https://api.telegram.org/bot\<bot-token>\/getMe
+
+
+## cronhob.. what is that?
+Sometimes, some hosting provider needs a ping in order to maintain alive the website.
+
+I have a php hosting and I created a cronjob that calls the file `cronjob.php` every x minutes and mantains alive my bot

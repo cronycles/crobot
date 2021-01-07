@@ -1,0 +1,19 @@
+{
+  "name": "crobot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "crobot.js",
+  "type": "module",
+  "scripts": {
+    "debug": "nodemon crobot.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "telegraf": "^4.3.0",
+    "ytdl-core": "^4.5.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}

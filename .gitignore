@@ -1,5 +1,4 @@
 .AppleDouble/
-config_user.py
-*.pyc
+node_modules/
 .DS_Store
 Logs/crobot.log

@@ -1,4 +1,0 @@
-mutagen==1.42.0
-pyTelegramBotAPI==3.6.6
-youtube-dl==2021.1.3
-ffmpeg==1.4
