@@ -3,7 +3,7 @@ telegram bot
 
 ## Hosting
 the project is hosted on 
-https://www.pythonanywhere.com/user/cronycles/
+https://www.crointhemorning.com/
 
 ## Project Requirements
 yo need to have **pip** installed on your system before running this project. See how to install it:
@@ -31,16 +31,11 @@ yo need to have **pip** installed on your system before running this project. Se
     #log path
     logFilePath= "./Logs/crobot.log"
     ```
-### pythonanywhere
-```pip install --user -r ./requirements.txt```
-
 ## To launch bot 
-###OSX
+### OSX
 open terminal and launch this command
-```python3 bot.py```
 
-###pythonanywhere
-```python bot.py```
+```python3 crobot.py```
 
 ## TELEGRAM BOT COMMANDS
 To see if your bot exists, just type on your browser:
