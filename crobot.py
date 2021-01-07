@@ -93,7 +93,8 @@ def send_help_reply(message):
 @bot.message_handler(func=lambda message: message.text is not None and message.text.startswith("https://youtu"))
 def podcast_video(message): 
     chat_id = message.chat.id
-    if chat_id == config.myChatId:
+    is_chat_id_whitelisted = chat_id in config.chatIdsWhiteList
+    if is_chat_id_whitelisted:
         bot.reply_to(message,'Start downloading video...')
         videoName = message.text
         downloadYoutubeAudio(videoName, chat_id)

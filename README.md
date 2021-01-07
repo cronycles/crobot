@@ -22,8 +22,8 @@ yo need to have **pip** installed on your system before running this project. Se
     #code of the telegram crobot
     telegramBotCode = 'YourTelegramBotCode'
 
-    #this bot is protected and only works with one chat id. Set here your one
-    myChatId = 123456789
+    #this bot is protected and only works with a whitelist of chat ids. Set here your ones
+    chatIdsWhiteList = [123456789, 23456789]
 
     #temporary downloaded directory path
     downloadDirectory= "./Downloads"
