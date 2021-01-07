@@ -67,36 +67,6 @@ def system_call_with_response(command):
     outcome['errors'] = errors
     return outcome
 
-def sendTransmissionCommand(command): 
-    outcome = None
-    response = system_call_with_response(command)
-
-    if response['errors']:
-        errors = response['errors']
-        logging.error(errors)
-    else:
-        outcome = response['output']
-
-    return outcome
-
-def addTorrentToTransmission(url, chat_id):
-    try:
-        if url:
-            bot.send_message(chat_id, "adding torrent...")
-            command = "transmission-remote -n " + config.transmissionUsername + ":" + config.transmissionPassword + " -a " + url
-            response = sendTransmissionCommand(command)
-            if "success" in response:
-                return True
-            else: 
-                return False
-        else: 
-            bot.send_message(chat_id, "valid torrent url")
-            return False
-    except Exception as e: 
-        print(e)
-        return False
-
-
 @bot.message_handler(commands=['start'])
 def send_welcome_reply(message): 
     bot.reply_to(message, 'Hi there, I am ready, send /help command if you want to know what I can do')
@@ -115,34 +85,19 @@ def send_mychatid_reply(message):
 
 @bot.message_handler(commands=['help'])
 def send_help_reply(message):
-    msg = '- /ready am I alive?' 
-    msg += '- /mychatid to retreive what is your chat id' 
+    msg = '- /ready am I alive?\n' 
+    msg += '- /mychatid to retreive what is your chat id\n' 
     msg += '- send a youtube video link to download it as mp4 \n'
     bot.reply_to(message, msg)
 
 @bot.message_handler(func=lambda message: message.text is not None and message.text.startswith("https://youtu"))
 def podcast_video(message): 
     chat_id = message.chat.id
-    if chat_id == config.cronyclesChatId:
+    if chat_id == config.myChatId:
         bot.reply_to(message,'Start downloading video...')
         videoName = message.text
         downloadYoutubeAudio(videoName, chat_id)
     else:
         bot.reply_to(message,'user not allowed')
-
-@bot.message_handler(func=lambda message: message.text is not None and message.text.endswith(".torrent"))
-def addTorrentFromUrl(message): 
-    chat_id = message.chat.id
-    if chat_id == config.cronyclesChatId:
-        bot.reply_to(message,'Start downloading torrent...')
-        response = addTorrentToTransmission(message.text,chat_id)
-        if response:
-            bot.send_message(chat_id,'Torrent added')
-        else:
-            bot.send_message(chat_id,'Error Adding Torrent')
-    else:
-        bot.send_message(chat_id,'user not allowed')
-    
-
 
 bot.polling()
