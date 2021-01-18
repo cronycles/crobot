@@ -35,8 +35,14 @@ yo need to have **pip** installed on your system before running this project. Se
 ### OSX
 open terminal and launch this command
 
-```python3 crobot.py```
+```python3 start.py```
 
 ## TELEGRAM BOT COMMANDS
 To see if your bot exists, just type on your browser:
 https://api.telegram.org/bot\<bot-token>\/getMe
+
+
+## cronhob.. what is that?
+Sometimes, some hosting provider needs a ping in order to maintain alive the website.
+
+I have a php hosting and I created a cronjob that calls the file `cronjob.php` every x minutes and mantains alive my bot

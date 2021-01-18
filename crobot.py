@@ -101,4 +101,5 @@ def podcast_video(message):
     else:
         bot.reply_to(message,'user not allowed')
 
-bot.polling()
+def start():
+    bot.polling()
