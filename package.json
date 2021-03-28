@@ -5,6 +5,7 @@
   "main": "crobot.js",
   "type": "module",
   "scripts": {
+    "restore": "npm install",
     "debug": "nodemon crobot.js"
   },
   "author": "",
