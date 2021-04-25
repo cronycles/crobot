@@ -5,11 +5,13 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Start crobot",
-            "type": "python",
+            "type": "pwa-node",
             "request": "launch",
-            "program": "start.py",
-            "console": "integratedTerminal"
+            "name": "Run crobot",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}/crobot.js"
         }
     ]
 }
