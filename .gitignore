@@ -1,7 +1,7 @@
 .AppleDouble/
 node_modules/
 .DS_Store
-*.log
-Logs/crobot.log
+logs/*.log
+logs/*-audit.json
 config.js
 

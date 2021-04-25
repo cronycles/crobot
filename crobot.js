@@ -16,7 +16,7 @@ bot.start((ctx) => {
 bot.help((ctx) => ctx.reply(messages.helpReplayMessage));
 bot.command('mychatid', (ctx) => {
   try {
-    const chatId = utils.getChatIdFromCcazz(ctx);
+    const chatId = utils.getChatIdFromContext(ctx);
     const message = messages.myChatIdReplayMessage.replace('{$chadId}', chatId);
     ctx.reply(message);
 

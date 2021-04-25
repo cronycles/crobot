@@ -1,5 +1,6 @@
 import winston from 'winston';
 import path from 'path';
+import DailyRotateFile from 'winston-daily-rotate-file';
 
 var logDir = './logs'; // directory path you want to set
 
@@ -9,6 +10,15 @@ class Logger {
   }
 
   #initializeLogger() {
+
+    var transport = new DailyRotateFile({
+      filename: path.join(logDir,'crobot-%DATE%.log'),
+      datePattern: 'YYYY-MM-DD-HH',
+      zippedArchive: false,
+      maxSize: '20m',
+      maxFiles: '10d'
+    });
+
     const outcome = winston.createLogger({
       level: 'info',
       format: winston.format.combine(
@@ -21,7 +31,7 @@ class Logger {
       ),
       defaultMeta: { service: 'crobot' },
       transports: [
-        new winston.transports.File({ filename: path.join(logDir,'logs.log') })
+        transport
       ]
     });
     
