@@ -1,22 +1,27 @@
 import { Telegraf } from 'telegraf';
-import config from './config.js'
-import messages from './messages.js'
+import config from './configure/config.js'
+import messages from './configure/messages.js'
 import fs from 'fs';
 import ytdl from 'ytdl-core';
 import BotUtils from './bot.utils.js';
+import logger from './logger.js';
 
 const bot = new Telegraf(config.telegramBotCode);
 const utils = new BotUtils();
 
-bot.start((ctx) => ctx.reply(messages.startReplayMessage));
+bot.start((ctx) => {
+  logger.info(messages.startLogMessage);
+  ctx.reply(messages.startReplayMessage)
+});
 bot.help((ctx) => ctx.reply(messages.helpReplayMessage));
 bot.command('mychatid', (ctx) => {
   try {
-    const chatId = utils.getChatIdFromContext(ctx);
+    const chatId = utils.getChatIdFromCcazz(ctx);
     const message = messages.myChatIdReplayMessage.replace('{$chadId}', chatId);
     ctx.reply(message);
 
   } catch (e) {
+    logger.error('There was an error getting chat id', e);
     ctx.reply("There was an error getting your chat id");
   }
 });
@@ -47,6 +52,7 @@ bot.url(/^https:\/\/youtu/i, (ctx) => {
       }
     }
   }catch (e){
+    logger.error('There was an error transforming the youtube video', e);
     ctx.reply("There was an error transforming the youtube video");
   }
   

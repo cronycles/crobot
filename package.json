@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "telegraf": "^4.3.0",
+    "winston": "^3.3.3",
     "ytdl-core": "^4.5.0"
   },
   "devDependencies": {

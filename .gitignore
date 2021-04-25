@@ -1,5 +1,7 @@
 .AppleDouble/
 node_modules/
 .DS_Store
+*.log
 Logs/crobot.log
 config.js
+
