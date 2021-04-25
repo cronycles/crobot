@@ -1,5 +1,6 @@
 import { createServer } from 'http';
 import Crobot from './crobot';
+import logger from './logger';
 
 const server = createServer((req, res) => {
   res.statusCode = 200;
@@ -7,7 +8,8 @@ const server = createServer((req, res) => {
   res.end('Hello World! NodeJS \n');
 });
 
-server.listen(()=> {
-  const crobot = new Crobot();
-  crobot.startBot();
-});
+server.listen();
+
+const crobot = new Crobot();
+crobot.startBot();
+logger.info("crobot is started up")

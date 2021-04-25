@@ -39,3 +39,8 @@ Start the bot with the Play __Run crobot__ command
 ## TELEGRAM BOT COMMANDS
 To see if your bot exists, just type on your browser:
 https://api.telegram.org/bot\<bot-token>\/getMe
+
+## DEPLOY BOT
+* To deploy the first you need to launch the ```npm run build```
+* Then compress the result folder to a zip 
+* and then update it into the crobot folder on your provider url
