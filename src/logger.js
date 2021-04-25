@@ -6,10 +6,10 @@ var logDir = './logs'; // directory path you want to set
 
 class Logger {
   constructor() {
-    this.logger = this.#initializeLogger();
+    this.logger = this.initializeLogger();
   }
 
-  #initializeLogger() {
+  initializeLogger() {
 
     var transport = new DailyRotateFile({
       filename: path.join(logDir,'crobot-%DATE%.log'),

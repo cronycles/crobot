@@ -4,4 +4,5 @@ node_modules/
 logs/*.log
 logs/*-audit.json
 config.js
+dist/
 
