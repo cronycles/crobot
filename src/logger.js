@@ -13,7 +13,7 @@ class Logger {
 
     var transport = new DailyRotateFile({
       filename: path.join(logDir,'crobot-%DATE%.log'),
-      datePattern: 'YYYY-MM-DD-HH',
+      datePattern: 'YYYY-MM-DD',
       zippedArchive: false,
       maxSize: '20m',
       maxFiles: '10d'
