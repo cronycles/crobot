@@ -24,9 +24,10 @@ setInterval(function(){
   }
 
   const req = https.request(options, res => {
+    logger.info(`statusCode: ${res.statusCode}`)
     res.on('data', d => {
-      
-    });
+      process.stdout.write(d)
+    })
   })
   req.on('error', error => {
     logger.error(error)
