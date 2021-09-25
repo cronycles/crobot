@@ -1,7 +1,7 @@
 import { createServer } from 'http';
-const https = require('https');
-import Crobot from './crobot';
-import logger from './logger';
+import * as https from 'https';
+import Crobot from './crobot.js';
+import logger from './logger.js';
 
 const server = createServer((req, res) => {
   res.statusCode = 200;
@@ -34,4 +34,4 @@ setInterval(function(){
   })
   req.end()
 
-}, 60000);
+}, 30000);

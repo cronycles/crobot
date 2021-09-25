@@ -2,11 +2,11 @@
   "name": "crobot",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/app.js",
+  "main": "app.js",
+  "type": "module",
   "scripts": {
-    "build": "babel src -d dist",
     "restore": "npm install",
-    "debug": "nodemon dist/app.js"
+    "debug": "nodemon app.js"
   },
   "author": "",
   "license": "ISC",
@@ -17,11 +17,6 @@
     "ytdl-core": "^4.5.0"
   },
   "devDependencies": {
-    "@types/babel-core": "^6.25.6",
-    "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.3",
-    "babel-polyfill": "^6.26.0",
-    "babel-preset-env": "^1.7.0",
     "nodemon": "^2.0.7"
   }
 }
